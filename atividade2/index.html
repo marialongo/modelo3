@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul></ul>
+ 
+    <input type = "text" name = "user">
+    <button onclick = "listusuario()">Adicionar</button>
+
+    <script src= "https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+    
+    var listElement = document.querySelector("ul");
+    var  inputElement = document.querySelector("input");
+
+    function renderusuario(usuario){
+        for (repo of usuario){
+            const textElement = document.createTextNode(repo.name);
+            const liElement = document.createElement("li");
+            
+            liElemet.appendChild(textElement);
+            listElement.appendChild(liElement);
+        }
+    }
+
+    function listusuario() {
+        var user = inputElement.value;
+        if (!user) return ;
+        axios.get("https://api.github.com/users/" + user + "/repos")
+       .then(function (response) {
+           renderusuario(response.data);
+       })
+    }
+    
+    
+    
+    
+    </script>
+</body>
+</html>
